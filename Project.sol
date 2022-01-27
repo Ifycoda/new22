@@ -7,6 +7,7 @@ contract FundProject is TimeLockedWalletFactory{
     address admin;
     address wallet;
     uint projectId;
+    event createdProject (string projectName, address wallet, uint fundRequested);
     
     struct Project {
         string projectName;
@@ -30,7 +31,7 @@ contract FundProject is TimeLockedWalletFactory{
         require(msg.sender == admin, "Only Admin can call this function");
         _;
     }
-    event createdProject (string projectName, address wallet, uint fundRequested);
+    
     function createProject(
         string memory _projectName,
         string memory _projectDescription,
